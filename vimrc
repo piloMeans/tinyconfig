@@ -56,7 +56,12 @@ endif
 set t_ut=
 
 call plug#begin()
-	Plug 'fatih/vim-go', { 'do' : ':GoInstallBinaries'}
+"	Plug 'fatih/vim-go', { 'do' : ':GoInstallBinaries'}
 	Plug 'ctrlpvim/ctrlp.vim'
+	Plug 'godlygeek/tabular'
+	Plug 'plasticboy/vim-markdown'
 call plug#end()
 
+"let g:go_guru_scope = ["gvisor.googlesource.com/gvisor/..."]
+let g:vim_markdown_folding_disabled=1
+"nmap <C-g> :GoDecls<CR>
