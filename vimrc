@@ -1,10 +1,29 @@
+
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+"	Plug 'fatih/vim-go', { 'do' : ':GoInstallBinaries'}
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'taglist.vim'
+call vundle#end()
+
+filetype plugin indent on
+
+nmap<C-l> :Tlist <LF>
+
+"let g:go_guru_scope = ["gvisor.googlesource.com/gvisor/..."]
+let g:vim_markdown_folding_disabled=1
+
 "let g:solarized_termtrans=1
 "let g:solarized_termcolors=256
 set t_Co=256
 syntax on
 setlocal noswapfile " 不要生成swap文件
 
-set mouse=a
+set mouse=cn
 set showcmd
 set updatetime=100
 set showmode
@@ -55,13 +74,3 @@ endif
 
 set t_ut=
 
-call plug#begin()
-"	Plug 'fatih/vim-go', { 'do' : ':GoInstallBinaries'}
-	Plug 'ctrlpvim/ctrlp.vim'
-	Plug 'godlygeek/tabular'
-	Plug 'plasticboy/vim-markdown'
-call plug#end()
-
-"let g:go_guru_scope = ["gvisor.googlesource.com/gvisor/..."]
-let g:vim_markdown_folding_disabled=1
-"nmap <C-g> :GoDecls<CR>

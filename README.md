@@ -28,3 +28,5 @@ if you want to use the system clipboard together, you should install `xsel` or `
 ### update
 
 Add the `vimrc` file recently used. And if you want to make it work, you need to download the [gruvbox.vim](https://github.com/morhetz/gruvbox).
+
+And you also need to install the [vundle](https://github.com/VundleVim/Vundle.vim)
