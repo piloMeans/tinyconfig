@@ -1,14 +1,22 @@
-
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-"	Plug 'fatih/vim-go', { 'do' : ':GoInstallBinaries'}
+"   Plug 'fatih/vim-go', { 'do' : ':GoInstallBinaries'}
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'preservim/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'taglist.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'stephpy/vim-yaml'
+Plugin 'tfnico/vim-gradle'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'tpope/vim-fugitive'
 call vundle#end()
+
+"au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 filetype plugin indent on
 
@@ -23,7 +31,7 @@ set t_Co=256
 syntax on
 setlocal noswapfile " 不要生成swap文件
 
-set mouse=cn
+"set mouse=cn
 set showcmd
 set updatetime=100
 set showmode
@@ -32,6 +40,7 @@ set bufhidden=hide " 当buffer被丢弃的时候隐藏它
 set background=dark
 "colorscheme evening " 设定配色方案
 colorscheme gruvbox " 设定配色方案
+hi Normal guibg=NONE ctermbg=NONE
 set number " 显示行号
 set cursorline " 突出显示当前行
 set ruler " 打开状态栏标尺
@@ -59,18 +68,27 @@ set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ Ln\
 "nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR> " 用空格键来开关折叠
 
 if has("cscope")
-	set csto=0
-	set cst
-	set nocsverb
-	if filereadable("cscope.out")
-		cs add cscope.out
-	else
-		if $CSCOPE_DB!=""
-			cs add $CSCOPE_DB
-		endif
-	endif
-	set csverb
+    set csto=0
+    set cst
+    set nocsverb
+    if filereadable("cscope.out")
+        cs add cscope.out
+    else
+        if $CSCOPE_DB!=""
+            cs add $CSCOPE_DB
+        endif
+    endif
+    set csverb
 endif
 
 set t_ut=
 
+set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
+
+"autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeWinPos = "right"
+
+" set ctrlp search ignore case
+set ignorecase
