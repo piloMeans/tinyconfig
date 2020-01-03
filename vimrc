@@ -7,7 +7,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'preservim/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'taglist.vim'
+" Plugin 'taglist.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'stephpy/vim-yaml'
 Plugin 'tfnico/vim-gradle'
@@ -67,19 +67,19 @@ set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ Ln\
 "setlocal foldlevel=1 " 设置折叠层数为 1
 "nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR> " 用空格键来开关折叠
 
-if has("cscope")
-    set csto=0
-    set cst
-    set nocsverb
-    if filereadable("cscope.out")
-        cs add cscope.out
-    else
-        if $CSCOPE_DB!=""
-            cs add $CSCOPE_DB
-        endif
-    endif
-    set csverb
-endif
+"if has("cscope")
+"    set csto=0
+"    set cst
+"    set nocsverb
+"    if filereadable("cscope.out")
+"        cs add cscope.out
+"    else
+"        if $CSCOPE_DB!=""
+"            cs add $CSCOPE_DB
+"        endif
+"    endif
+"    set csverb
+"endif
 
 set t_ut=
 
