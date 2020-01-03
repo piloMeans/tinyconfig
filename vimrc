@@ -92,3 +92,4 @@ let g:NERDTreeWinPos = "right"
 
 " set ctrlp search ignore case
 set ignorecase
+let g:ctrlp_follow_symlinks=1
