@@ -12,10 +12,14 @@ Plugin 'morhetz/gruvbox'
 Plugin 'stephpy/vim-yaml'
 Plugin 'tfnico/vim-gradle'
 Plugin 'derekwyatt/vim-scala'
-Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitiv'
 Plugin 'frazrepo/vim-rainbow'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'sjl/badwolf'
+Plugin 'itchyny/lightline.vim'
+Plugin 'itchyny/vim-gitbranch'
+Plugin 'easymotion/vim-easymotion'
 call vundle#end()
 
 "au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
@@ -42,7 +46,8 @@ set clipboard=unnamed
 set bufhidden=hide " 当buffer被丢弃的时候隐藏它
 set background=dark
 "colorscheme evening " 设定配色方案
-colorscheme gruvbox " 设定配色方案
+"colorscheme gruvbox " 设定配色方案
+colorscheme badwolf " 设定配色方案
 hi Normal guibg=NONE ctermbg=NONE
 set number " 显示行号
 set cursorline " 突出显示当前行
@@ -101,5 +106,25 @@ let g:ctrlp_follow_symlinks=1
 " show tabs in vim
 set list
 set listchars=tab:>-
-
 let g:rainbow_active=1
+
+" lightline
+
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ }
+      \ }
+
+function! LightlineFilename()
+  "let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let root = fnamemodify(get(b:, 'gitbranch_path'), ':h:h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
+
+"easymotion
+nmap s <Plug>(easymotion-s)
