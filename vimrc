@@ -127,4 +127,8 @@ function! LightlineFilename()
 endfunction
 
 "easymotion
-nmap s <Plug>(easymotion-s)
+"nmap s <Plug>(easymotion-s)
+map <Leader> <Plug>(easymotion-prefix)
+"nmap <Leader>s <Plug>(easymotion-overwin-f2)
+"map  <Leader>w <Plug>(easymotion-bd-w)
+"nmap <Leader>w <Plug>(easymotion-overwin-w)
