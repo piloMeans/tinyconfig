@@ -22,6 +22,7 @@ Plugin 'sjl/badwolf'
 Plugin 'itchyny/lightline.vim'
 Plugin 'itchyny/vim-gitbranch'
 Plugin 'easymotion/vim-easymotion'
+"Plugin 'vim-scripts/Conque-GDB'
 call vundle#end()
 
 "au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
@@ -48,8 +49,8 @@ set clipboard=unnamed
 set bufhidden=hide " 当buffer被丢弃的时候隐藏它
 set background=dark
 "colorscheme evening " 设定配色方案
-"colorscheme gruvbox " 设定配色方案
-colorscheme badwolf " 设定配色方案
+colorscheme gruvbox " 设定配色方案
+"colorscheme badwolf " 设定配色方案
 hi Normal guibg=NONE ctermbg=NONE
 set number " 显示行号
 set cursorline " 突出显示当前行
@@ -101,7 +102,7 @@ map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinPos = "right"
 
 " set ctrlp search ignore case
-set ignorecase
+" set ignorecase
 let g:ctrlp_follow_symlinks=1
 
 
@@ -134,3 +135,20 @@ map <Leader> <Plug>(easymotion-prefix)
 "nmap <Leader>s <Plug>(easymotion-overwin-f2)
 "map  <Leader>w <Plug>(easymotion-bd-w)
 "nmap <Leader>w <Plug>(easymotion-overwin-w)
+"
+"let g:ycm_filetype_blacklist = {}
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar': 1,
+      \ 'notes': 1,
+      \ 'markdown': 0,
+      \ 'netrw': 1,
+      \ 'unite': 1,
+      \ 'text': 1,
+      \ 'vimwiki': 1,
+      \ 'pandoc': 1,
+      \ 'infolog': 1,
+      \ 'leaderf': 1,
+      \ 'mail': 1
+      \}
+
+let g:AutoPairsMultilineClose=0
