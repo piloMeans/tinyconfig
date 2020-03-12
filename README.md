@@ -19,8 +19,6 @@ Anything you want to change, you better do that in the `.tmux.conf.local` file.
 
 ### tip
 
-Already set the `C-a` as a prefix.
-
 if you want to use the system clipboard together, you should install `xsel` or `xclip`.
 
 `prefix + m` to enable/disable the mouse mode.
@@ -30,3 +28,5 @@ if you want to use the system clipboard together, you should install `xsel` or `
 Add the `vimrc` file recently used. And if you want to make it work, you need to download the [gruvbox.vim](https://github.com/morhetz/gruvbox).
 
 And you also need to install the [vundle](https://github.com/VundleVim/Vundle.vim)
+
+https://github.com/yudai/sshh
