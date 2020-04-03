@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#set -x
+
+if [ $# -ge 3 ];then
+	passwd="$3"
+else
+	passwd="PASSWD!"
+fi
+
+if [ $# -eq 1 ];then
+	ssh root@$1
+elif [ $# -ge 2 ] && [ $2 == "y" ];then
+	sshpass -p "$passwd" ssh -t -o StrictHostKeyChecking=no USERNAME@$1 2>/tmp/ssh.output
+	grep 'ssh-keygen' /tmp/ssh.output > /dev/null
+	if [ $? -eq 0 ];then
+		ssh-keygen -f "/home/xmzhou/.ssh/known_hosts" -R $1
+		sshpass -p "$passwd" ssh -t -o StrictHostKeyChecking=no USERNAME@$1
+	fi
+fi
