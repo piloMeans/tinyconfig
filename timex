@@ -1,0 +1,58 @@
+#!/bin/bash
+
+set -e
+#set -x
+
+Usage(){
+	echo "$0 start [offset] [direction]"
+	echo "offset is second, direction is +/-"
+	echo "start is the base time, can be now or time like (2020-03-20) or (2020-03-20T10:10:10)"
+	echo ""
+	echo "example: $0 now 8560 +"
+}
+
+
+if [[ $# < 1 ]]; then
+	Usage
+	exit -1
+fi
+start=$1
+offset=$2
+direction=$3
+
+if [[ "$offset" == ""  ]]; then
+	offset=0
+fi
+
+mul=1
+if [[ ${offset: -1} == "D" ]]; then
+	mul=86400
+	offset=${offset: 0: -1}
+elif [[ ${offset: -1} == "H" ]]; then
+	mul=3600
+	offset=${offset: 0: -1}
+elif [[ ${offset: -1} == "M" ]]; then
+	mul=60
+	offset=${offset: 0: -1}
+fi
+
+offset=$(bc <<< "$offset*$mul")
+echo "offset is $offset second"
+
+if [[ "$direction" == "" ]]; then
+	direction="+"
+fi
+
+if [[ $direction != "+" ]] && [[ $direction != "-" ]]; then
+	Usage
+	exit
+fi
+
+if [[ $start == "now" ]]; then
+	start=$(date +%s)
+else
+	start=$(date -d $start +%s)
+fi
+
+res=`date -d @$(bc <<< "${start}${direction}${offset}")`
+echo "$res"
